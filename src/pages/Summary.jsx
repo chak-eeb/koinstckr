@@ -5,7 +5,7 @@ import '../App.css'
 
 const Summary = () => {
     return (
-        <div className='summary p-5'>
+        <div className='summary p-3'>
           <AddCoin />
           <CoinsList />
         </div>
