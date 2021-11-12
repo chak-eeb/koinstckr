@@ -35,3 +35,16 @@ ul.coinsList {
   margin-bottom: 10px;
   border-radius: 5px;
 }
+
+.delete-icon {
+  display: none;
+  position: absolute;
+  right: 10px;
+}
+
+.coin:hover .delete-icon {
+  display: block;
+}
+.coin:hover .price-change {
+  margin-right: 15px;
+}

@@ -5,10 +5,9 @@ import coinApi from '../apis/coinApi'
 
 const CoinsList = () => {
     const [coins, setCoins] = useState([])
+    const {coinsList, deleteCoin} = useContext(CoinslistContext)
     const [isLoading, setIsLoading] = useState(false)
-    const {coinsList} = useContext(CoinslistContext)
-
-    console.log(coinsList);
+    
     useEffect(()=>{
         const fetchCoins = async () => {
             setIsLoading(true)
@@ -21,7 +20,9 @@ const CoinsList = () => {
             setCoins(response.data);
             setIsLoading(false);
         }
-        fetchCoins()
+        if(coinsList.length >0){
+           fetchCoins()
+        } else setCoins([])
     }, [coinsList])
 
 const renderCoins = () =>{
@@ -30,9 +31,9 @@ const renderCoins = () =>{
    }
    return (
        <ul className='coinsList'>
-        {coins?.map(coin =>{
+        {coins.map(coin =>{
             return (
-                <Coin key={coin.id} coin={coin} />
+                <Coin key={coin.id} coin={coin} deleteCoin={deleteCoin}/>
             )
         })}
        </ul>
